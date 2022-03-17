@@ -13,10 +13,6 @@ $row_configuracion = mysqli_fetch_array( $sql_configuracion );
 	font-family: "Roboto-Bold";
 	src: url("/bf-archivos/bf-fuente/Roboto-Bold.ttf");
 }
-@font-face {
-	font-family: "Nimbus Sans Becker PBla Regular";
-	src: url("/bf-archivos/bf-fuente/Nimbus Sans Becker PBla Regular.ttf");
-}
 body {
 	margin: 0px;
 	padding: 0px;
