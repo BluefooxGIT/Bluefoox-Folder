@@ -30,10 +30,14 @@ body .ui-tooltip {
 a {
 	cursor: pointer;
 }
+span {
+	box-sizing: border-box;
+}
 input {
 	font-family: "Roboto-Regular";
 	border: 2px solid #f2f2f2;
 	outline: none !important;
+	box-sizing: border-box;
 }
 #id-div-contenedor-subherramientas-buscar-archivos {
 	position: relative;
@@ -43,19 +47,58 @@ input {
 #id-div-contenedor-subherramientas-subir-archivos {
 	margin: -3px 0px 21px 0px;
 }
-/* width */ ::-webkit-scrollbar {
+::-webkit-scrollbar {
 width: 9px;
 }
-/* Track */ ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
 background: #f1f1f1;
 border-radius: 10px;
 }
-/* Handle */ ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
 background: #888;
 border-radius: 10px;
 }
-/* Handle on hover */ ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
 background: #555;
+}
+.ui-progressbar {
+	background-color: inherit !important;
+}
+.ui-corner-all {
+	background-color: inherit !important;
+}
+.ui-widget {
+	background-color: inherit !important;
+}
+.ui-widget-content {
+	background-color: inherit !important;
+	box-shadow: inherit;
+	border-radius: inherit;
+}
+.div-contenedor-progressbar {
+	border-radius: 30px;
+	padding: 3px;
+	background-color: transparent;
+border: 2px solid <?php echo $row_configuracion['configuracion_interfaz_color_primario'];
+?>;
+	width: 100%;
+}
+.progress {
+	display: none;
+	width: 100%;
+	background-color: transparent;
+	font-family: "Roboto-Bold";
+}
+.ui-progressbar-value {
+	font-size: 0.90em;
+background-color: <?php echo $row_configuracion['configuracion_interfaz_color_primario'];
+?> !important;
+	color: #ffffff;
+	padding: 3px 0px;
+	border-radius: 30px;
+	margin: 0px 0px;
+	display: block;
+	text-align: center;
 }
 .hr-separador {
 	width: 100%;
@@ -202,7 +245,7 @@ color: <?php echo $row_configuracion['configuracion_interfaz_color_secundario'];
 }
 .span-alerta-cancelar {
 	cursor: pointer;
-	padding: 12px 18px;
+	padding: 12px 12px;
 	border-radius: 30px;
 	font-family: "Roboto-Regular";
 	font-size: 0.90em;
@@ -211,7 +254,7 @@ color: <?php echo $row_configuracion['configuracion_interfaz_color_secundario'];
 	color: #000000;
 	text-align: center;
 	margin: 6px auto;
-	width: 83%;
+	width: 100%;
 	border: 2px solid #f2f2f2;
 	transition: all .3s ease;
 }
@@ -265,7 +308,7 @@ border: 2px <?php echo $row_configuracion['configuracion_interfaz_color_primario
 ?> solid;
 }
 .input-ajustes {
-	padding: 12px 6px 12px 6px;
+	padding: 12px 12px 12px 12px;
 	border-radius: 30px;
 	border: 2px solid #f2f2f2;
 	background-color: #f2f2f2;
@@ -324,7 +367,7 @@ background-color: <?php echo $row_configuracion['configuracion_interfaz_color_se
 	border: 2px solid transparent;
 }
 .input-subherramienta-interfaz-boton {
-	padding: 12px 18px;
+	padding: 12px 12px;
 	border-radius: 30px;
 	font-family: "Roboto-Regular";
 	font-size: 0.90em;
@@ -335,7 +378,9 @@ background-color: <?php echo $row_configuracion['configuracion_interfaz_color_pr
 	text-align: center;
 	margin: 9px auto 0px auto;
 	border: 2px solid transparent;
-	width: 83%;
+	width: 100%;
+	caret-color: transparent;
+	box-sizing: border-box;
 }
 .input-subherramienta-interfaz-boton:hover {
 	cursor: pointer;
@@ -345,13 +390,13 @@ background-color: <?php echo $row_configuracion['configuracion_interfaz_color_se
 	border: 2px solid transparent;
 }
 .input-subharremienta-renombrar {
-	padding: 12px 0px 12px 33px;
+	padding: 12px 12px 12px 12px;
 	border-radius: 30px;
 	font-family: "Roboto-Regular";
 	font-size: 0.90em;
 	display: inline-table;
 	outline: none;
-	width: 83%;
+	width: 100%;
 	margin: 0px 0px 12px 0px;
 	border: 1px solid #f2f2f2;
 	background-color: #f2f2f2;
@@ -362,7 +407,7 @@ border: <?php echo $row_configuracion['configuracion_interfaz_color_primario'];
 ?> solid 2px;
 }
 .input-subharremienta-interfaz-fix {
-	padding: 12px 6px 12px 33px;
+	padding: 12px 12px 12px 12px;
 	border-radius: 30px;
 	border: 1px solid #f2f2f2;
 	background-color: #f2f2f2;
@@ -585,6 +630,8 @@ border: 0px solid <?php echo $row_configuracion['configuracion_interfaz_color_pr
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+	background-color: transparent;
+	min-width: 300px;
 }
 .div-carga {
 	position: fixed;
@@ -595,6 +642,7 @@ border: 0px solid <?php echo $row_configuracion['configuracion_interfaz_color_pr
 	z-index: 10000;
 	background-color: rgba(255, 255, 255, 0.60);
 	display: none;
+	backdrop-filter: blur(3px);
 }
 .div-contenedor-descripcion {
 	display: block;
@@ -842,7 +890,7 @@ border: <?php echo $row_configuracion['configuracion_interfaz_color_primario'];
 /*SVG*/
 .svg-input-fix {
 	position: relative;
-	left: -346px;
+	left: -300px;
 	top: 3px;
 	width: 15px;
 	height: auto;
@@ -1301,6 +1349,10 @@ left: -100%;
 }
 
 @media only screen and (max-width: 460px) {
+.div-carga-contenedor {
+	min-width: 80%;
+	max-width: 80%;
+}
 .div-contenedor-herramientas {
 	top: -9px;
 }
