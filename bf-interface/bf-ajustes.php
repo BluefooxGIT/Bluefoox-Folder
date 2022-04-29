@@ -239,7 +239,7 @@ $disco_espacio_usado_porcentaje = round( ( $disco_espacio_usado * 100 ) / $disco
           unlink( $target );
         }
       }
-      unlink( '../bluefoox_documentos.sql' );
+      unlink( 'bluefoox_documentos.sql' );
       ?>
     </div>
   </div>
