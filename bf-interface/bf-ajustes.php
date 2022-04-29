@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include_once( 'bf-php/bf-conexion.php' );
 if ( isset( $_SESSION[ 'usuarios_id' ] ) ) {
   $uid = $_SESSION[ 'usuarios_id' ];
