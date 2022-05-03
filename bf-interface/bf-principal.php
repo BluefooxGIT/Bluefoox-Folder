@@ -306,7 +306,7 @@ function limpiar_busqueda() {
 
 $('#id-input-archivos').bind('change', function() {
     var tamano_archivos = (this.files[0].size);
-    if(tamano_archivos <= 79000000000){
+    if(tamano_archivos <= 8900000000){
         almacenar_archivos()
     } else {
         $('#id-div-archivo-grande').show();
