@@ -52,5 +52,7 @@ foreach ( $_FILES[ "input-archivos" ][ "error" ] as $key => $error ) {
     }
   }
 }
-header( "Location: $header" );
+if ( isset( $_SERVER[ "HTTP_REFERER" ] ) ) {
+  header( "Location: " . $_SERVER[ "HTTP_REFERER" ] );
+}
 ?>
