@@ -10,7 +10,6 @@ if ( $sha1_github_nuevo != $sha1_actual ) {
     $zip = new ZipArchive;
     $res = $zip->open( $github_actualizacion_nuevo );
     if ( $res === TRUE ) {
-      //$zip->extractTo( getcwd() );
       $zip->extractTo( '../' );
       $zip->close();
 
@@ -29,7 +28,6 @@ if ( $sha1_github_nuevo != $sha1_actual ) {
         closedir( $dir );
       }
       $src = "../Bluefoox-Folder-main";
-      //$dst = getcwd();
       $dst = '../';
       custom_copy( $src, $dst );
       mysqli_query( $mysqli, "UPDATE bluefoox_configuracion SET configuracion_sha1_actualizacion = '$sha1_github_nuevo' WHERE uid = '1'" );
@@ -51,6 +49,7 @@ function removeFiles( $target ) {
   }
 }
 unlink( '../bluefoox_documentos.sql' );
+unlink( '../update_folder.sql' );
 
 if ( isset( $_SERVER[ "HTTP_REFERER" ] ) ) {
   header( "Location: " . $_SERVER[ "HTTP_REFERER" ] );
