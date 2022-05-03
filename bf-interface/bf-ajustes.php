@@ -190,7 +190,6 @@ $disco_espacio_usado_porcentaje = round( ( $disco_espacio_usado * 100 ) / $disco
     </svg>
     <span class="span-titulo-ajuste">Sistema</span>
     <div class="div-usuario-ajuste">
-      <label class="label-titulos-ajuste">Versión estable actualizada.</label>
       <?php
       $sha1_github = "https://github.com/BluefooxGIT/Bluefoox-Folder/archive/refs/heads/main.zip";
       $sha1_github_nuevo = sha1_file( $sha1_github );
@@ -199,7 +198,7 @@ $disco_espacio_usado_porcentaje = round( ( $disco_espacio_usado * 100 ) / $disco
         echo '<label class="label-titulos-ajuste">Existe una nueva actualizaci&oacute;n.</label>';
         echo '<div class="div-actualizacion" onclick="actualizar_sistema()">Descargar y aplicar.</div>';
       } else {
-        echo '<label class="label-titulos-ajuste">Versión estable actualizada.</label>';
+        echo '<label class="label-titulos-ajuste">Versi&oacute;n estable actualizada.</label>';
       }
       ?>
       <form id="id-form-actualizar" method="post" enctype="multipart/form-data" action="">
