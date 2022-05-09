@@ -1,5 +1,5 @@
 <?php
-error_reporting( 0 );
+//error_reporting( 0 );
 include_once( 'bf-php/bf-conexion.php' );
 if ( isset( $_SESSION[ 'usuarios_id' ] ) ) {
   $uid = $_SESSION[ 'usuarios_id' ];
@@ -192,13 +192,21 @@ $disco_espacio_usado_porcentaje = round( ( $disco_espacio_usado * 100 ) / $disco
     <div class="div-usuario-ajuste">
       <?php
       $sha1_github = "https://github.com/BluefooxGIT/Bluefoox-Folder/archive/refs/heads/main.zip";
-      $sha1_github_nuevo = sha1_file( $sha1_github );
-      $sha1_actual = $row_root[ 'configuracion_sha1_actualizacion' ];
-      if ( $sha1_github_nuevo != $sha1_actual ) {
-        echo '<label class="label-titulos-ajuste">Existe una nueva actualizaci&oacute;n.</label>';
-        echo '<div class="div-actualizacion" onclick="actualizar_sistema()">Descargar y aplicar.</div>';
-      } else {
+      $sha1_github_headers = @get_headers( $sha1_github );
+      if ( !$sha1_github_headers || $sha1_github_headers[ 0 ] == 'HTTP/1.1 404 Not Found' ) {
         echo '<label class="label-titulos-ajuste">Versi&oacute;n estable actualizada.</label>';
+        echo 'no conectado';
+      } else {
+        $sha1_github_nuevo = sha1_file( $sha1_github );
+        $sha1_actual = $row_root[ 'configuracion_sha1_actualizacion' ];
+        if ( $sha1_github_nuevo != $sha1_actual ) {
+          echo '<label class="label-titulos-ajuste">Existe una nueva actualizaci&oacute;n.</label>';
+          echo '<div class="div-actualizacion" onclick="actualizar_sistema()">Descargar y aplicar actualizaci&oacute;n.</div>';
+          echo 'conectado';
+        } else {
+          echo '<label class="label-titulos-ajuste">Versi&oacute;n estable actualizada.</label>';
+          echo 'conectado actualizado';
+        }
       }
       ?>
       <form id="id-form-actualizar" method="post" enctype="multipart/form-data" action="">
